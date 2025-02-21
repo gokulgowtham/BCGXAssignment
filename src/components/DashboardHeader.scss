@@ -1,0 +1,21 @@
+.headerContentContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px 10px 10px;
+ 
+  & .menuWithTitle {
+    display: flex;
+    column-gap: 10px;
+  }
+  
+  & .rightHeaderDetails {
+    display: flex;
+    column-gap: 20px;
+
+    & .userIcon {
+      display: flex;
+      column-gap: 6px;
+
+    }
+  }
+}
