@@ -1,0 +1,5 @@
+.mapContainer {
+    #map > div[class*='maplibregl-control-container']{
+        display: none;
+    }
+}

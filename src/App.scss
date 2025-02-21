@@ -1,4 +1,10 @@
-body{
+html, body{
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
+
+  & #map > div[class*='maplibregl-control-container']{
+    display: none;
+}
 }
