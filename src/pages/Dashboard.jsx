@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DashboardHeader from "../components/DashboardHeader";
 import WorldMap from "../components/WorldMap";
 import "./Dashboard.scss";
 import { Typography } from "@mui/material";
 import DashboardContent from "../components/DashboardContent";
+import { getCities } from "../mockApi";
+import './Dashboard.scss';
+
 const Dashboard = () => {
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    const citiesData = getCities();
+    setCities(citiesData);
+  }, []);
+
   return (
     <section className="DashboardContainer">
       <div className="DashboardHeader">
@@ -12,11 +22,10 @@ const Dashboard = () => {
       </div>
       <div className="DashboardContentContainer">
         <div className="worldMapContainer">
-          <WorldMap />
+          <WorldMap cities={cities}/>
         </div>
         <div className="DashboardContent">
-          <DashboardContent />
-          {/* <p>Coming soon...</p> */}
+          <DashboardContent cardData={cities}/>
         </div>
       </div>
     </section>

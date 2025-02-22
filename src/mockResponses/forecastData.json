@@ -1,0 +1,302 @@
+{
+    "City 1": [
+      {
+        "actualConsumptionValue": "7M",
+        "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ],
+    "City 2": [
+      {
+        "actualConsumptionValue": "7M",
+         "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ],
+    "City 3": [
+      {
+        "actualConsumptionValue": "7M",
+        "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ],
+    "City 4": [
+      {
+        "actualConsumptionValue": "7M",
+        "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ],
+    "City 5": [
+      {
+        "actualConsumptionValue": "7M",
+        "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ],
+    "City 6": [
+      {
+        "actualConsumptionValue": "7M",
+        "forecastValue": "7.23M",
+        "actualConsumptionPercentage": "45.67%",
+        "forecastPercentage": "8.12%"
+      },
+      {
+        "actualConsumptionValue": "3M",
+        "forecastValue": "3.1M",
+        "actualConsumptionPercentage": "12.34%",
+        "forecastPercentage": "3.48%"
+      },
+      {
+        "actualConsumptionValue": "5M",
+        "forecastValue": "5.17M",
+        "actualConsumptionPercentage": "67.89%",
+        "forecastPercentage": "5.81%"
+      },
+      {
+        "actualConsumptionValue": "4M",
+        "forecastValue": "4.13M",
+        "actualConsumptionPercentage": "23.45%",
+        "forecastPercentage": "4.65%"
+      },
+      {
+        "actualConsumptionValue": "6M",
+        "forecastValue": "6.2M",
+        "actualConsumptionPercentage": "78.9%",
+        "forecastPercentage": "6.97%"
+      },
+      {
+        "actualConsumptionValue": "2M",
+        "forecastValue": "2.07M",
+        "actualConsumptionPercentage": "34.56%",
+        "forecastPercentage": "2.32%"
+      },
+      {
+        "actualConsumptionValue": "8M",
+        "forecastValue": "8.27M",
+        "actualConsumptionPercentage": "56.78%",
+        "forecastPercentage": "9.29%"
+      },
+      {
+        "actualConsumptionValue": "9M",
+        "forecastValue": "9.3M",
+        "actualConsumptionPercentage": "89.01%",
+        "forecastPercentage": "10.46%"
+      }
+    ]
+}

@@ -1,8 +1,33 @@
 .WidgetDataContainer{
     display: flex;
+    height: 100%;
     justify-content: space-betwee   n;
     max-width: 95%;
     overflow-x: scroll;
     column-gap: 26px;
     margin-top: 16px;
+
+    & .forecastContainer{
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+
+        & .forecastContainerR1 {
+            display: flex;
+            height: 60px;
+            column-gap:30px;
+        }
+        & .forecastContainerR2{
+            display: flex;
+            height: 60px;
+            column-gap:30px;
+        }
+    }   
+}
+
+.miniatureChartContainer{
+    height: 120px; // Ensure the container has enough height
+    width: 100%; // Ensure the container takes full width
+    position: relative; // Ensure the chart is positioned correctly
+    overflow: visible; // Ensure the chart is not clipped
 }

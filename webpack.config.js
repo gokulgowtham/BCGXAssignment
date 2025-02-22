@@ -20,10 +20,14 @@ module.exports = {
         test:  /\.(css|scss)$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.json$/,
+        type: 'json',
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -31,6 +35,7 @@ module.exports = {
       filename: 'index.html', // Output file name in the dist folder
     }),
   ],
+  devtool: 'source-map', // Enable source maps
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
