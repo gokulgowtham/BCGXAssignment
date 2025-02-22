@@ -9,7 +9,7 @@ import './Dashboard.scss';
 
 const Dashboard = () => {
   const [cities, setCities] = useState([]);
-
+  const [position, setPosition] = useState('top');
   useEffect(() => {
     const citiesData = getCities();
     setCities(citiesData);
@@ -18,14 +18,14 @@ const Dashboard = () => {
   return (
     <section className="DashboardContainer">
       <div className="DashboardHeader">
-        <DashboardHeader />
+        <DashboardHeader setPosition={setPosition} />
       </div>
       <div className="DashboardContentContainer">
         <div className="worldMapContainer">
           <WorldMap cities={cities}/>
         </div>
         <div className="DashboardContent">
-          <DashboardContent cardData={cities}/>
+          <DashboardContent cardData={cities} position={position}/>
         </div>
       </div>
     </section>

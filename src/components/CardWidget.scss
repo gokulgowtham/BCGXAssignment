@@ -1,33 +1,93 @@
-.WidgetDataContainer{
+.widgetDataWrapper {
+  height: 100%;
+  display: flex;
+  align-items: start;
+
+  .WidgetDataContainer {
+    max-height: 100%;
+    height: fit-content;
     display: flex;
-    height: 100%;
-    justify-content: space-betwee   n;
-    max-width: 95%;
-    overflow-x: scroll;
-    column-gap: 26px;
-    margin-top: 16px;
+    column-gap: 20px;
+    overflow: scroll;
+    justify-content: space-between;
 
-    & .forecastContainer{
-        margin-top: 16px;
+    // margin-top: 16px;
+    & .forecastContainer {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+
+      & .forecastContainerR1 {
         display: flex;
-        flex-direction: column;
-
-        & .forecastContainerR1 {
-            display: flex;
-            height: 60px;
-            column-gap:30px;
-        }
-        & .forecastContainerR2{
-            display: flex;
-            height: 60px;
-            column-gap:30px;
-        }
-    }   
+        height: 60px;
+        column-gap: 30px;
+      }
+      & .forecastContainerR2 {
+        display: flex;
+        height: 60px;
+        column-gap: 30px;
+      }
+    }
+  }
 }
 
-.miniatureChartContainer{
-    height: 120px; // Ensure the container has enough height
-    width: 100%; // Ensure the container takes full width
-    position: relative; // Ensure the chart is positioned correctly
-    overflow: visible; // Ensure the chart is not clipped
+.widgetDataWrapper.bottom {
+    flex-direction: row;
+  align-items: end;
+}
+.widgetDataWrapper.right {
+    flex-direction: column;
+  align-items: end;
+}
+.widgetDataWrapper.left {
+  flex-direction: column;
+  align-items: start;
+}
+
+.WidgetDataContainer.left{
+    flex-direction: column;
+}
+.WidgetDataContainer.right{
+    flex-direction: column;
+}
+// // .WidgetDataContainer.top {
+// //   display: flex;
+// //   flex-direction: row;
+// //   justify-content: space-between;
+// //   align-items: flex-start;
+// //   max-width: 95%;
+// //   overflow-x: scroll;
+// //   column-gap: 20px;
+// //   margin-top: 16px;
+// // }
+
+// .WidgetDataContainer.bottom {
+//     // display: flex;
+//     // flex-direction: row;
+//     // justify-content: space-between;
+//     // align-items: flex-end;
+//     // max-width: 95%;
+//     // overflow-x: scroll;
+//     // column-gap: 20px;
+//     // margin-top: 16px;
+//     // position: relative;
+//     // bottom: 20px;
+//     display: flex;
+//     align-items: flex-end;
+//     overflow-x: scroll;
+//     justify-content: space-between;
+//     column-gap: 20px;
+// }
+
+// .WidgetDataContainer.left {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: flex-start;
+// }
+.miniatureChartContainer {
+  height: 120px; // Ensure the container has enough height
+  width: 100%; // Ensure the container takes full width
+  position: relative; // Ensure the chart is positioned correctly
+  overflow: visible; // Ensure the chart is not clipped
 }
