@@ -1,0 +1,46 @@
+{
+    "cities": [
+        {
+            "title": "City 1",
+            "coordinates": [72.8777, 19.076], 
+            "forecastValue": "45.7M",
+            "forecastPercentage": "65%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/25/25694.png"
+        },
+        {
+            "title": "City 2",
+            "coordinates": [77.1025, 28.7041],
+            "forecastValue": "30.2M",
+            "forecastPercentage": "50%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/489/489870.png"
+        },
+        {
+            "title": "City 3",
+            "coordinates": [88.3639, 22.5726],
+            "forecastValue": "20.1M",
+            "forecastPercentage": "35%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        },
+        {
+            "title": "City 4",
+            "coordinates": [80.2707, 13.0827],
+            "forecastValue": "15.3M",
+            "forecastPercentage": "25%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        },
+        {
+            "title": "City 5",
+            "coordinates": [78.4867, 17.3850],
+            "forecastValue": "10.8M",
+            "forecastPercentage": "15%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        },
+        {
+            "title": "City 6",
+            "coordinates": [75.7873, 26.9124],
+            "forecastValue": "5.4M",
+            "forecastPercentage": "10%",
+            "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
+        }
+    ]
+}

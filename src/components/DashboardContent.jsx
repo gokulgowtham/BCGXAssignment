@@ -1,10 +1,12 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import CardWidget from "./CardWidget";
+import CardWidget from "./TransparentCard";
+import TransparentCard from "./TransparentCard";
+import './CardWidget.scss';
 
-const DashboardContent = () => {
+const DashboardContent = ({cardData}) => {
   return (
-    <section>
+    <section style={{height: '100%'}}>
       <Typography
         variant="h2"
         component="div"
@@ -13,6 +15,19 @@ const DashboardContent = () => {
         Hello User,
       </Typography>
 
+      <div style={{ height: '100%'}}>
+        <section className="WidgetDataContainer">
+          {cardData.map(
+            ({ title, forecastValue, forecastPercentage }, index) => (
+              <TransparentCard
+                key={index}
+                title={title}
+                forecastValue={forecastValue}
+                forecastPercentage={forecastPercentage}
+              />
+            )
+          )}
+        </section>
       <div>
         <CardWidget/>
       </div>
