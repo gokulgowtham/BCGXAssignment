@@ -28,6 +28,8 @@ const DashboardContent = ({cardData}) => {
             )
           )}
         </section>
+      <div>
+        <CardWidget/>
       </div>
     </section>
   );

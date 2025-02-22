@@ -86,6 +86,7 @@ const WorldMap = ({ cities }) => {
         ref={mapContainer}
         style={{ height: "100%", width: "100%", position: "relative" }}
       />
+      <div ref={mapContainer} style={{ height: "100%", width: "100%" }} />
     </section>
   );
 };
