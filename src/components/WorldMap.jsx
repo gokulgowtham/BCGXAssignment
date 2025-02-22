@@ -26,7 +26,7 @@ const WorldMap = () => {
 
   return (
     <section className="mapContainer">
-      <div ref={mapContainer} style={{ height: "100vh", width: "100%" }} />
+      <div ref={mapContainer} style={{ height: "100%", width: "100%" }} />
     </section>
   );
 };
