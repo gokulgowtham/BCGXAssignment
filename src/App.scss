@@ -4,7 +4,32 @@ html, body{
   height: 100%;
   overflow: hidden;
 
-  & #map > div[class*='maplibregl-control-container']{
+  & #map > div[class*="maplibregl-control-container"] {
     display: none;
+  }
 }
+
+  /* Custom scrollbar for WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(241, 241, 241,4); /* Color of the track */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Thumb */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the thumb */
+    height: 2px;
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Thumb on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb on hover */
+  }
 }
