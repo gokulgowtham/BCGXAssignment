@@ -29,8 +29,8 @@ const DashboardContent = ({ cardData, position }) => {
               />
             )
           )}
-        </section>
-      </div>
+     </section>
+     </div>
     </section>
   );
 };

@@ -5,7 +5,6 @@ import "./Dashboard.scss";
 import { Typography } from "@mui/material";
 import DashboardContent from "../components/DashboardContent";
 import { getCities } from "../mockApi";
-import './Dashboard.scss';
 
 const Dashboard = () => {
   const [cities, setCities] = useState([]);
