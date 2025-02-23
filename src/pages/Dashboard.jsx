@@ -13,25 +13,28 @@ const Dashboard = () => {
   const [cities, setCities] = useState([]);
   const [position, setPosition] = useState("top");
   const [isDetailsRoute, setIsDetailsRoute] = useState(false);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   useEffect(() => {
     const citiesData = getCities();
     setCities(citiesData);
   }, []);
 
-  useEffect(()=>{
-    if(location.pathname !== "/"){
+  useEffect(() => {
+    if (location.pathname !== "/") {
       setIsDetailsRoute(true);
-    }else{
+    } else {
       setIsDetailsRoute(false);
     }
-
   }, [location.pathname]);
 
   return (
     <section className="DashboardContainer">
       <div className="DashboardHeader">
-        <DashboardHeader setPosition={setPosition} isDetailsRoute={isDetailsRoute}/>
+        <DashboardHeader
+          setPosition={setPosition}
+          isDetailsRoute={isDetailsRoute}
+          sideBarState={[isSidebarOpen, setIsSidebarOpen]}
+        />
       </div>
       <div className="DashboardContentContainer">
         {location.pathname === "/" && (
@@ -39,18 +42,18 @@ const Dashboard = () => {
             <WorldMap cities={cities} />
           </div>
         )}
-        <div className="DashboardContent">
-          {/* <DashboardContent cardData={cities} position={position}/> */}
-          <Routes>
-            <Route
-              path="/"
-              element={
+        {/* <DashboardContent cardData={cities} position={position}/> */}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="DashboardContent">
                 <DashboardContent cardData={cities} position={position} />
-              }
-            />
-            <Route path="/details/:cityId" element={<Details />} />
-          </Routes>
-        </div>
+              </div>
+            }
+          />
+          <Route path="/details/:cityId" element={<Details sideBarState={[isSidebarOpen, setIsSidebarOpen]}/>} />
+        </Routes>
       </div>
     </section>
   );
