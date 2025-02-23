@@ -1,0 +1,23 @@
+    {
+"099837465721": {
+    "finalForecastHistorical": [680, 510, 590, 530, 430, 720, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 680, 510, 590, 530, 430, 720]
+},
+"099837465722": {
+    "finalForecastHistorical": [700, 520, 600, 540, 440, 730, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 700, 520, 600, 540, 440, 730]
+},
+"099837465723": {
+    "finalForecastHistorical": [690, 515, 595, 535, 435, 725, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 690, 515, 595, 535, 435, 725]
+},
+"099837465724": {
+    "finalForecastHistorical": [710, 525, 605, 545, 445, 735, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 710, 525, 605, 545, 445, 735]
+},
+"099837465725": {
+    "finalForecastHistorical": [720, 530, 610, 550, 450, 740, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 720, 530, 610, 550, 450, 740]
+}
+
+}

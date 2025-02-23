@@ -23,6 +23,7 @@ import Backlog from "../components/Backlog";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
 import "./Details.scss";
+import ChartContainer from "../components/ChartContainer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -298,6 +299,9 @@ const Details = ({ sideBarState }) => {
                   INCLUDE
                 </Typography>
               </div>
+            </div>
+            <div>
+              <ChartContainer selectedStackId={selectedStackId}/>
             </div>
           </section>
         </Box>
