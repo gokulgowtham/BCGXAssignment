@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Card, CardContent, Typography, Box } from "@mui/material";
 import "./CardWidget.scss";
 import MiniatureChart from "./MiniatureChart";
 import { getForecastDataByCity } from "../mockApi";
+import { useNavigate } from 'react-router-dom';
 
-const TransparentCard = ({ title, forecastValue, forecastPercentage }) => {
+const TransparentCard = ({ title, forecastValue, forecastPercentage, cityId }) => {
   const [forecastState, setForecastState] = useState([]);
   const [forecastPercentageState, setForecastPercentageState] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (title.length > 0) {
@@ -31,6 +33,12 @@ const TransparentCard = ({ title, forecastValue, forecastPercentage }) => {
     }
   }, [title]);
 
+
+  const handleCardClick = useCallback (() => {
+    navigate(`/details/${cityId}`);
+  }, [cityId]);
+
+
   return (
     <section>
       <Card
@@ -47,10 +55,12 @@ const TransparentCard = ({ title, forecastValue, forecastPercentage }) => {
           borderRight: "2px solid green", // Green right border
           borderBottom: "2px solid green", // Green bottom border
           backdropFilter: "blur(10px)", // Blur effect around the card
+          cursor: "pointer", // Show pointer on hover
           "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.3)", // Slightly more opaque on hover
           },
         }}
+        onClick={handleCardClick}
       >
         <CardContent
           sx={{

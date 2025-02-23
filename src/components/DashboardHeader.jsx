@@ -12,8 +12,10 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import SettingsIcon from "@mui/icons-material/Settings";
 import "./DashboardHeader.scss";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
+import { useParams } from 'react-router-dom';
 
-export default function ButtonAppBar({ setPosition }) {
+export default function ButtonAppBar({ setPosition, isDetailsRoute }) {
+  const { cityId } = useParams();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -37,16 +39,16 @@ export default function ButtonAppBar({ setPosition }) {
           <section className="headerContentContainer">
             <div className="menuWithTitle">
               <MenuOutlined />
-              <Typography
+              {!isDetailsRoute && <Typography
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1, fontSize: "1rem" }}
               >
                 Webapp
-              </Typography>
+              </Typography>}
             </div>
             <div className="rightHeaderDetails">
-              <div className="positionContainer">
+              {!isDetailsRoute && (<><div className="positionContainer">
                 <Tooltip title="position settings">
                   <IconButton
                     onClick={handleClick}
@@ -105,6 +107,7 @@ export default function ButtonAppBar({ setPosition }) {
                   <MenuItem onClick={() => setPosition("left")}>Left</MenuItem>
                 </Menu>
               </div>
+
               <div>
                 <IconButton
                   aria-controls={open ? "settings-menu" : undefined}
@@ -113,7 +116,7 @@ export default function ButtonAppBar({ setPosition }) {
                 >
                   <LanguageOutlinedIcon sx={{ color: "white" }} />
                 </IconButton>
-              </div>
+              </div> </>)}
               <div className="userIcon">
                 <IconButton
                   onClick={handleClick}

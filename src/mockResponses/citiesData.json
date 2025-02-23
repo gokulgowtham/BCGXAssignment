@@ -1,6 +1,7 @@
 {
     "cities": [
         {
+            "id": 1,
             "title": "City 1",
             "coordinates": [72.8777, 19.076], 
             "forecastValue": "45.7M",
@@ -8,37 +9,42 @@
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/25/25694.png"
         },
         {
+            "id": 2,
             "title": "City 2",
             "coordinates": [77.1025, 28.7041],
-            "forecastValue": "30.2M",
-            "forecastPercentage": "50%",
+            "forecastValue": "79.2T",
+            "forecastPercentage": "62%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/489/489870.png"
         },
         {
+            "id": 3,
             "title": "City 3",
             "coordinates": [88.3639, 22.5726],
-            "forecastValue": "20.1M",
-            "forecastPercentage": "35%",
+            "forecastValue": "567.5M",
+            "forecastPercentage": "56%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
         },
         {
+            "id": 4,
             "title": "City 4",
             "coordinates": [80.2707, 13.0827],
-            "forecastValue": "15.3M",
-            "forecastPercentage": "25%",
+            "forecastValue": "567.9M",
+            "forecastPercentage": "23%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
         },
         {
+            "id": 5,
             "title": "City 5",
             "coordinates": [78.4867, 17.3850],
-            "forecastValue": "10.8M",
-            "forecastPercentage": "15%",
+            "forecastValue": "$23.5T",
+            "forecastPercentage": "85%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
         },
         {
+            "id": 6,
             "title": "City 6",
             "coordinates": [75.7873, 26.9124],
-            "forecastValue": "5.4M",
+            "forecastValue": "814.1M",
             "forecastPercentage": "10%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
         }
