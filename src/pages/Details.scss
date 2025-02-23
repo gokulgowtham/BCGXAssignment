@@ -3,7 +3,61 @@
     border-left: 2px solid black;
     border-right: 2px solid black;
 
-    & .TabContainer {
-        
+    & .mainContainer {
+        display: flex;
+        flex-direction: column;
+
+        & .header1{
+            width: 100%;
+            background-color: #16404D;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            column-gap: 40px;
+
+            & .header1--unit1{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 20px;
+                margin-left: 30px;
+                margin-right: 40px;
+            }
+
+            & .header1--unit2{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 20px;
+                margin-left: 60px;
+            }
+
+            & .header1--unit3{
+                border-radius: 2px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                // margin-top: 20px;
+                margin-left: 60px;
+            }
+        }
+
+        & .header2{
+            margin-top: 2px;
+            width: 100%;
+            background-color: #16404D;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+
+            & .header2--unit1{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 30px;
+            }
+        }
+
     }
 }
