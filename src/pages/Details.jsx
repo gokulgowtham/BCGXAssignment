@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   Drawer,
@@ -18,7 +18,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BorderLeft, OutlinedFlag } from "@mui/icons-material";
-import { getValuesForStack } from "../mockApi";
+import { getStackDetails, getValuesForStack } from "../mockApi";
 import Backlog from "../components/Backlog";
 import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
@@ -43,7 +43,9 @@ function TabPanel(props) {
 const Details = ({ sideBarState }) => {
   const { cityId } = useParams();
   const [tabValue, setTabValue] = useState("backlog");
-
+  const [stackData, setStackData] = useState([]);
+  const [selectedStackId, setSelectedStackId] = useState(null);
+  const [stackIdData, setStackIdData] = useState(null);
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
@@ -54,6 +56,25 @@ const Details = ({ sideBarState }) => {
   };
 
   const { backlog, pending, finalSignOff } = getValuesForStack(cityId || "1");
+  const stackDataResp = getStackDetails(tabValue);
+  
+  useEffect(()=>{
+    const callGetStackDetails = async () => {
+      const stackDataResp = getStackDetails(tabValue);
+      setStackData(stackDataResp);
+    }
+
+    if(tabValue !==""){
+      callGetStackDetails();
+    }
+
+  }, [tabValue]);
+
+  useEffect(()=>{
+    if(selectedStackId && stackData){
+      setStackIdData(stackData.find(stack => stack?.stackId === selectedStackId));
+    }
+  }, [selectedStackId, stackData])
   return (
     <div className="DetailsContainer">
       <Box sx={{ display: "flex", height: "calc(100vh)", overflow: "hidden" }}>
@@ -101,7 +122,7 @@ const Details = ({ sideBarState }) => {
                 sx={{ color: "white", paddingLeft: "10px" }}
                 gutterBottom
               >
-                Sample Stack
+                {stackIdData?.stackName || 'Sample Stack'}
               </Typography>
               <section className="TabContainer">
                 <Tabs
@@ -132,7 +153,7 @@ const Details = ({ sideBarState }) => {
                   />
                 </Tabs>
                 <TabPanel value={tabValue} index={"backlog"}>
-                  <Backlog backlogValue={backlog} />
+                  <Backlog backlogValue={backlog} stackData={stackData} stackIdState={[selectedStackId, setSelectedStackId]} />
                 </TabPanel>
                 <TabPanel value={tabValue} index={"pending"}>
                   Item Two
@@ -172,7 +193,7 @@ const Details = ({ sideBarState }) => {
                     fontWeight: "bold",
                   }}
                 >
-                  Sample Stack
+                  {stackIdData?.stackName || 'Sample Stack'}
                 </Typography>
               </div>
               <div className="header1--unit2">
@@ -189,7 +210,7 @@ const Details = ({ sideBarState }) => {
                     marginLeft: "10px",
                   }}
                 >
-                  Stack Id: {"9597593172"}
+                  Stack Id: {stackIdData?.stackId || '099837465721XX'}
                 </Typography>
               </div>
               <div className="header1--unit3">
@@ -223,7 +244,7 @@ const Details = ({ sideBarState }) => {
                       FORECAST
                     </Typography>
                     <Typography variant="caption" color="#666">
-                      89%
+                     {stackIdData?.forecastData1 || '89%'}
                     </Typography>
                   </Box>
                   <Box
@@ -242,13 +263,13 @@ const Details = ({ sideBarState }) => {
                       FORECAST
                     </Typography>
                     <Typography variant="caption" color="#666">
-                      80%
+                    {stackIdData?.forecastData2 || '80%'}
                     </Typography>
                   </Box>
                 </Box>
               </div>
               <div className="header1--unit4">
-                <OutlinedFlag />
+                <OutlinedFlag sx={{ color: "white" }} />
               </div>
             </div>
             <div className="header2">

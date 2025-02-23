@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -13,48 +13,48 @@ import {
 } from "@mui/material";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import "./StackList.scss";
-const tileData = [
-  {
-    id: 1,
-    stackName: "Sample Stack 1",
-    description: "This is the first card.",
-  },
-  {
-    id: 2,
-    stackName: "Sample Stack 2",
-    description: "This is the second card.",
-  },
-  {
-    id: 3,
-    stackName: "Sample Stack 3",
-    description: "This is the third card.",
-  },
-  {
-    id: 4,
-    stackName: "Sample Stack 4",
-    description: "This is the fourth card.",
-  },
-  {
-    id: 5,
-    stackName: "Sample Stack 5",
-    description: "This is the fifth card.",
-  },
-  {
-    id: 6,
-    stackName: "Sample Stack 6",
-    description: "This is the sixth card.",
-  },
-  {
-    id: 7,
-    stackName: "Sample Stack 7",
-    description: "This is the seventh card.",
-  },
-  {
-    id: 8,
-    stackName: "Sample Stack 8",
-    description: "This is the eighth card.",
-  },
-];
+// const tileData = [
+//   {
+//     id: 1,
+//     stackName: "Sample Stack 1",
+//     description: "This is the first card.",
+//   },
+//   {
+//     id: 2,
+//     stackName: "Sample Stack 2",
+//     description: "This is the second card.",
+//   },
+//   {
+//     id: 3,
+//     stackName: "Sample Stack 3",
+//     description: "This is the third card.",
+//   },
+//   {
+//     id: 4,
+//     stackName: "Sample Stack 4",
+//     description: "This is the fourth card.",
+//   },
+//   {
+//     id: 5,
+//     stackName: "Sample Stack 5",
+//     description: "This is the fifth card.",
+//   },
+//   {
+//     id: 6,
+//     stackName: "Sample Stack 6",
+//     description: "This is the sixth card.",
+//   },
+//   {
+//     id: 7,
+//     stackName: "Sample Stack 7",
+//     description: "This is the seventh card.",
+//   },
+//   {
+//     id: 8,
+//     stackName: "Sample Stack 8",
+//     description: "This is the eighth card.",
+//   },
+// ];
 
 const handleCardClick = (id) => {
   console.log(`Card ${id} clicked`);
@@ -64,13 +64,21 @@ const handleButtonClick = (id) => {
   console.log(`Button on Card ${id} clicked`);
 };
 
-// Click handler for the tiles
-const handleTileClick = (id) => {
-  console.log(`Tile ${id} clicked`);
-};
-
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
-const StackList = () => {
+const StackList = ({ stackData, stackIdState }) => {
+  // const [selectedTileId, setSelectedTileId] = stackIdState;
+  const [selectedStackId, setSelectedStackId] = stackIdState;
+  // Click handler for the tiles
+  const handleTileClick = (id) => {
+    console.log(`Tile ${id} clicked`);
+    setSelectedStackId(id === selectedStackId ? null : id);
+  };
+
+  useEffect(() => {
+    if (stackData.length > 0) {
+      setSelectedStackId(stackData[0].stackId);
+    }
+  }, [stackData]);
   return (
     <Box
       sx={{
@@ -80,27 +88,36 @@ const StackList = () => {
         margin: "auto",
       }}
     >
-      {tileData.map((tile) => (
+      {stackData?.map((tile) => (
         <Box
-          key={tile.id}
-          onClick={() => handleTileClick(tile.id)}
+          key={tile?.stackId}
+          onClick={() => handleTileClick(tile?.stackId)}
           sx={{
             padding: 2,
             cursor: "pointer",
             transition: "transform 0.2s, border-color 0.2s, box-shadow 0.2s",
+            backgroundColor:
+              selectedStackId === tile.stackId
+                ? "rgba(211, 211, 211, 0.5)" // Light gray with opacity when selected
+                : "transparent",
+            transform:
+              selectedStackId === tile.stackId ? "scale(1.02)" : "none", // Scale when selected
+            borderColor:
+              selectedStackId === tile.stackId ? "#2196f3" : "transparent", // Blue border when selected
             "&:hover": {
               border: "1px solid blue",
               backgroundColor: "rgba(211, 211, 211, 0.5)", // Light gray with opacity
               transform: "scale(1.02)",
               borderColor: "#2196f3", // Blue border on hover
-              // Optional shadow
-              opacity: 0.9, // Apply opacity on hover
             },
           }}
         >
           <section className="tileDataContainer">
             <div>
-              <Checkbox {...label} />
+              <Checkbox
+                checked={selectedStackId === tile.stackId} // Checkbox is checked if tile is selected
+                onChange={() => handleTileClick(tile.stackId)} // Toggle selection on checkbox click
+              />
             </div>
             <div className="tileDataR1">
               <Chip

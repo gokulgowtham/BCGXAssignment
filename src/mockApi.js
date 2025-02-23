@@ -1,18 +1,20 @@
-import data from './mockResponses/citiesData.json';
-import forecastData from './mockResponses/forecastData.json';
-import stackData from './mockResponses/stackData.json';
+import data from "./mockResponses/citiesData.json";
+import forecastData from "./mockResponses/forecastData.json";
+import stackData from "./mockResponses/stackData.json";
+import backlogStackData from "./mockResponses/backlogStackData.json";
+
 export const getCities = () => {
-    return data.cities;
+  return data.cities;
 };
 
-export const getForecastDataByCity = (city)=>{
-    return forecastData[city];
-}
+export const getForecastDataByCity = (city) => {
+  return forecastData[city];
+};
 
-export const getValuesForStack = (cityId)=>{
-    return stackData[cityId];
+export const getValuesForStack = (cityId) => {
+  return stackData[cityId];
+};
 
-}
-
-// export const getStackDetails = ()
-
+export const getStackDetails = (tabValue) => {
+  return backlogStackData;
+};
