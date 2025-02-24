@@ -31,7 +31,10 @@
       pointer-events: none; // Allow clicking through to the map
       z-index: 2; // Layer above map
       padding: 20px 20px 20px 40px;
-
+      > section {
+        max-width: 94vw;
+        height: 80vh;
+      }
       // Target the widget container specifically
       .widgetDataWrapper {
         pointer-events: none;
