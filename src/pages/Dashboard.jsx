@@ -42,7 +42,6 @@ const Dashboard = () => {
             <WorldMap cities={cities} />
           </div>
         )}
-        {/* <DashboardContent cardData={cities} position={position}/> */}
         <Routes>
           <Route
             path="/"

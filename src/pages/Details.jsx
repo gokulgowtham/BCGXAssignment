@@ -192,7 +192,6 @@ const Details = ({ sideBarState }) => {
           sx={{
             flexGrow: 1, // Takes up remaining space
             maxWidth: `calc(100vw - ${isSidebarOpen ? "380px" : "0px"})`, // Adjust width based on drawer state
-            marginTop: "40px", // Push content below the header
             position: "relative",
             left: isSidebarOpen ? "380px" : "0px", // Adjust left position based on drawer state
             height: "calc(100vh - 40px)", // Adjust height to account for header

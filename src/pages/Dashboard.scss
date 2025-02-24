@@ -2,32 +2,49 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden; // Prevent any unwanted scrolling
 
-  & .DashboardContentContainer {
+  .DashboardContentContainer {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    position: relative; // Container for absolute positioning
+    min-height: 0; // Allow proper flex behavior
 
-    & .worldMapContainer {
+    .worldMapContainer {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
+      z-index: 1; // Base layer
 
-      & .mapContainer {
+      .mapContainer {
         height: 100%;
         width: 100%;
       }
     }
 
-    & .DashboardContent {
-      height: 100%;
-      z-index: 1;
-      position: relative;
+    .DashboardContent {
+      position: absolute; // Position over the map
+      top: 0;
+      left: 0;
+      right: 0;
+      pointer-events: none; // Allow clicking through to the map
+      z-index: 2; // Layer above map
       padding: 20px 20px 20px 40px;
+
+      // Target the widget container specifically
+      .widgetDataWrapper {
+        pointer-events: none;
+
+        .WidgetDataContainer {
+          pointer-events: none;
+
+          // Make only the Card components clickable
+          section {
+            pointer-events: auto;
+          }
+        }
+      }
     }
   }
 }

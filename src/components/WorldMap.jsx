@@ -14,6 +14,7 @@ const WorldMap = ({ cities }) => {
 
     // Log coordinates for debugging
     console.log("Cities:", cities);
+
     // Initialize the map
     try {
       map.current = new Map({
@@ -55,9 +56,9 @@ const WorldMap = ({ cities }) => {
         // Create a popup (tooltip)
         const popup = new Popup({ offset: 25 }).setHTML(`
           <h3>${title}</h3>
-  <span>Forecast value: </span><h3>${forecastValue}</h3>
-  <span>Forecast percentage: </span><p>${forecastPercentage}</p>
-`);
+          <span>Forecast value: </span><h3>${forecastValue}</h3>
+          <span>Forecast percentage: </span><p>${forecastPercentage}</p>
+        `);
 
         // Attach popup to marker
         marker.setPopup(popup);
@@ -72,12 +73,24 @@ const WorldMap = ({ cities }) => {
           marker.togglePopup(); // Close popup
         });
       });
+
+      // Add resize event listener to make the map responsive
+      const handleResize = () => {
+        if (map.current) {
+          map.current.resize(); // Resize the map to fit its container
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener("resize", handleResize); // Remove resize listener
+        map.current?.remove(); // Remove the map
+      };
     } catch (error) {
       console.error("Error initializing map:", error);
     }
-
-    // Cleanup on unmount
-    return () => map.current?.remove();
   }, [cities]);
 
   return (

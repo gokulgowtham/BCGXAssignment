@@ -3,17 +3,13 @@ import { Table, TableBody, TableCell, TableRow, Paper } from "@mui/material";
 import "./TabularContainer.scss";
 
 const TabularDataContainer = ({ forecastData }) => {
-  //   useEffect(() => {
-  //     if (forecastData) {
-  //         const
-  //     }
-  //   }, [forecastData]);
+
   return (
     <section className="TableContainer">
       <Paper
         sx={{
           backgroundColor: "#16404D", // Background color
-          minHeight: "120px", // Minimum height
+          minHeight: "162px", // Minimum height
           color: "white", // Text color
         }}
       >

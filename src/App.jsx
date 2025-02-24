@@ -5,10 +5,10 @@ import Details from "./pages/Details";
 import "./App.scss";
 function App() {
   
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); //rempve this post dev 
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(true); //rempve this post dev 
 
-  // return <Dashboard />;
-  return <Details  sideBarState={[isSidebarOpen, setIsSidebarOpen]}/>;
+  return <Dashboard />;
+  // return <Details  sideBarState={[isSidebarOpen, setIsSidebarOpen]}/>;
 }
 
 export default App;

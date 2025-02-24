@@ -2,8 +2,10 @@
   height: 100%;
   display: flex;
   align-items: start;
+  pointer-events: none;
 
   .WidgetDataContainer {
+    pointer-events: none;
     max-height: 100%;
     height: fit-content;
     display: flex;
