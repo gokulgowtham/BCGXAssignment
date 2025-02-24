@@ -4,6 +4,7 @@ import { Map, Marker, Popup } from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css"; // MapTiler CSS
 import { LocationOn, Place } from "@mui/icons-material";
 import { createRoot } from "react-dom/client";
+import CustomMapPopup from "./CustomMapPopup";
 
 const WorldMap = ({ cities }) => {
   const mapContainer = useRef(null);
@@ -53,23 +54,34 @@ const WorldMap = ({ cities }) => {
           .setLngLat(coordinates)
           .addTo(map.current);
 
-        // Create a popup (tooltip)
-        const popup = new Popup({ offset: 25 }).setHTML(`
-          <h3>${title}</h3>
-          <span>Forecast value: </span><h3>${forecastValue}</h3>
-          <span>Forecast percentage: </span><p>${forecastPercentage}</p>
-        `);
+        // Create a container for the custom popup
+        const popupContainer = document.createElement("div");
+        const popupRoot = createRoot(popupContainer);
 
-        // Attach popup to marker
+        // Render the custom popup component
+        popupRoot.render(
+          <CustomMapPopup
+            title={title}
+            forecastValue={forecastValue}
+            forecastPercentage={forecastPercentage}
+          />
+        );
+
+        // Create a MapTiler Popup and attach it to the marker
+        const popup = new Popup({ offset: 5 })
+          .setDOMContent(popupContainer)
+          .addTo(map.current);
+
+        // Attach the popup to the marker
         marker.setPopup(popup);
 
-        // Show popup on hover
         marker.getElement().addEventListener("mouseenter", () => {
+          console.log("Mouse entered marker"); // Debugging
           marker.togglePopup(); // Open popup
         });
-
-        // Hide popup when not hovering
+        
         marker.getElement().addEventListener("mouseleave", () => {
+          console.log("Mouse left marker"); // Debugging
           marker.togglePopup(); // Close popup
         });
       });

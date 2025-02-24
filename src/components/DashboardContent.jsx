@@ -10,7 +10,7 @@ const DashboardContent = ({ cardData, position }) => {
       <Typography
         variant="h2"
         component="div"
-        sx={{ flexGrow: 1, color: "white", fontWeight: "500" }}
+        sx={{ flexGrow: 1, color: "white", fontWeight: "500", marginBottom: "30px" }}
       >
         Hello User, 
       </Typography>

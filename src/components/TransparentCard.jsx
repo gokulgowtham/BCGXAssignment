@@ -96,7 +96,9 @@ const TransparentCard = ({ title, forecastValue, forecastPercentage, cityId }) =
                 </Typography>
               </div>
               <div className="miniatureChartContainer">
-                <MiniatureChart data={forecastState} data1Key={'actualConsumptionValue'} data2Key={'forecastValue'}/>
+                <MiniatureChart data={forecastState} data1Key={'actualConsumptionValue'} data2Key={'forecastValue'} 
+                  increasing={true}
+                />
               </div>
             </div>
             <div
@@ -116,7 +118,8 @@ const TransparentCard = ({ title, forecastValue, forecastPercentage, cityId }) =
                 </Typography>
               </div>
               <div className="miniatureChartContainer">
-                <MiniatureChart data={forecastPercentageState} data1Key={'actualConsumptionPercentage'} data2Key={'forecastPercentage'}/>
+                <MiniatureChart data={forecastPercentageState} data1Key={'actualConsumptionPercentage'} 
+                data2Key={'forecastPercentage'} increasing={false}/>
               </div>
             </div>
           </div>

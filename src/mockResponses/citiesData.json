@@ -11,7 +11,7 @@
         {
             "id": 2,
             "title": "City 2",
-            "coordinates": [77.1025, 28.7041],
+            "coordinates": [77.2090, 28.6139],
             "forecastValue": "79.2T",
             "forecastPercentage": "62%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/489/489870.png"
@@ -27,7 +27,7 @@
         {
             "id": 4,
             "title": "City 4",
-            "coordinates": [80.2707, 13.0827],
+            "coordinates": [103.8198, 1.3521],
             "forecastValue": "567.9M",
             "forecastPercentage": "23%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
@@ -35,7 +35,7 @@
         {
             "id": 5,
             "title": "City 5",
-            "coordinates": [78.4867, 17.3850],
+            "coordinates": [-74.0060, 40.7128],
             "forecastValue": "$23.5T",
             "forecastPercentage": "85%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
@@ -43,7 +43,7 @@
         {
             "id": 6,
             "title": "City 6",
-            "coordinates": [75.7873, 26.9124],
+            "coordinates": [139.6917, 35.6895],
             "forecastValue": "814.1M",
             "forecastPercentage": "10%",
             "iconSetUrl": "https://cdn-icons-png.flaticon.com/512/684/684908.png"

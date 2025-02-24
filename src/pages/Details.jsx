@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import {
   Drawer,
   Box,
@@ -12,9 +12,6 @@ import {
 } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-// import TabPanel from '@mui/lab/TabPanel';
-import MenuIcon from "@mui/icons-material/Menu";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { BorderLeft, OutlinedFlag } from "@mui/icons-material";
@@ -28,6 +25,8 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CircularProgressWithLabel from "../components/CircularProgressWithLabel";
 import TabularDataContainer from "../components/TabularDataContainer";
+import { useNavigate } from "react-router-dom";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -56,10 +55,13 @@ const Details = ({ sideBarState }) => {
     setTabValue(newValue);
   };
 
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = sideBarState;
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleBackClick = () => navigate("/");
 
   const { backlog, pending, finalSignOff } = getValuesForStack(cityId || "1");
   // const stackDataResp = getStackDetails(tabValue);
@@ -124,7 +126,7 @@ const Details = ({ sideBarState }) => {
                 position: "relative",
               }}
             >
-              <IconButton onClick={() => console.log("back")}>
+              <IconButton onClick={handleBackClick}>
                 <ArrowBackIcon sx={{ color: "white" }} />
               </IconButton>
               <IconButton onClick={toggleSidebar}>
@@ -433,7 +435,11 @@ const Details = ({ sideBarState }) => {
                 </Typography>
               </div>
               <div>
-                <CircularProgressWithLabel value={Number(stackIdData?.forecastData2.replace("%", "")) || ""} />
+                <CircularProgressWithLabel
+                  value={
+                    Number(stackIdData?.forecastData2.replace("%", "")) || ""
+                  }
+                />
               </div>
               <div className="mapHeader2--unit1">
                 {" "}
@@ -481,7 +487,11 @@ const Details = ({ sideBarState }) => {
                 </Typography>
               </div>
               <div>
-                <CircularProgressWithLabel value={Number(stackIdData?.forecastData2.replace("%", "")) || ""} />
+                <CircularProgressWithLabel
+                  value={
+                    Number(stackIdData?.forecastData2.replace("%", "")) || ""
+                  }
+                />
               </div>
             </div>
             <ChartContainer

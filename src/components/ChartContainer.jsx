@@ -107,7 +107,7 @@ const ChartContainer = ({ selectedStackId, mapToggleState, stackIdData}) => {
                 tick={{ fill: "white" }} // White y-axis labels
                 // White y-axis line
                         label={{
-                          value: "Values (ft. thousands)",
+                          value: "Consumption (ft. thousands)",
                           angle: -90,
                           position: "insideLeft",
                           offset: 0, // Adjust the offset value
