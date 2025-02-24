@@ -62,7 +62,7 @@ const Details = ({ sideBarState }) => {
   };
 
   const { backlog, pending, finalSignOff } = getValuesForStack(cityId || "1");
-  const stackDataResp = getStackDetails(tabValue);
+  // const stackDataResp = getStackDetails(tabValue);
 
   useEffect(() => {
     const callGetStackDetails = async () => {
@@ -191,7 +191,7 @@ const Details = ({ sideBarState }) => {
           component="main"
           sx={{
             flexGrow: 1, // Takes up remaining space
-            maxWidth: `calc(100vw - ${isSidebarOpen ? "400px" : "0px"})`, // Adjust width based on drawer state
+            maxWidth: `calc(100vw - ${isSidebarOpen ? "380px" : "0px"})`, // Adjust width based on drawer state
             marginTop: "40px", // Push content below the header
             position: "relative",
             left: isSidebarOpen ? "380px" : "0px", // Adjust left position based on drawer state
@@ -434,7 +434,7 @@ const Details = ({ sideBarState }) => {
                 </Typography>
               </div>
               <div>
-                <CircularProgressWithLabel value={89} />
+                <CircularProgressWithLabel value={Number(stackIdData?.forecastData2.replace("%", "")) || ""} />
               </div>
               <div className="mapHeader2--unit1">
                 {" "}
@@ -482,14 +482,14 @@ const Details = ({ sideBarState }) => {
                 </Typography>
               </div>
               <div>
-                <CircularProgressWithLabel value={80} />
+                <CircularProgressWithLabel value={Number(stackIdData?.forecastData2.replace("%", "")) || ""} />
               </div>
             </div>
             <ChartContainer
               selectedStackId={selectedStackId}
               mapToggleState={[aiForecastToggle, finalForecastToggle]}
+              // stackIdData={stackIdData}
             />
-            <TabularDataContainer/>
           </section>
         </Box>
       </Box>

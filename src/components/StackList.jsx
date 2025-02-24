@@ -59,7 +59,6 @@ const StackList = ({ stackData, stackIdState }) => {
               border: "1px solid blue",
               backgroundColor: "rgba(211, 211, 211, 0.5)", // Light gray with opacity
               transform: "scale(1.02)",
-              borderColor: "#2196f3", // Blue border on hover
             },
           }}
         >
@@ -68,6 +67,11 @@ const StackList = ({ stackData, stackIdState }) => {
               <Checkbox
                 checked={selectedStackId === tile.stackId} // Checkbox is checked if tile is selected
                 onChange={() => handleTileClick(tile.stackId)} // Toggle selection on checkbox click
+                sx={{
+                  "&.Mui-checked, &.MuiCheckbox-indeterminate": {
+                    color: "lavenderblush",
+                  },
+                }}
               />
             </div>
             <div className="tileDataR1">

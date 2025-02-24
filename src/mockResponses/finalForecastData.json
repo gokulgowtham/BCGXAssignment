@@ -1,23 +1,39 @@
     {
 "099837465721": {
-    "finalForecastHistorical": [680, 510, 590, 530, 430, 720, null, null, null, null, null, null],
-    "finalForecast": [null, null, null, null, null, null, 680, 510, 590, 530, 430, 720]
+    "finalForecastHistorical": [680345, 510234, 590123, 530456, 430789, 720567, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 680345, 510234, 590123, 530456, 430789, 720567]
 },
 "099837465722": {
-    "finalForecastHistorical": [700, 520, 600, 540, 440, 730, null, null, null, null, null, null],
-    "finalForecast": [null, null, null, null, null, null, 700, 520, 600, 540, 440, 730]
+    "finalForecastHistorical": [700456, 520567, 600678, 540789, 440890, 730901, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 700456, 520567, 600678, 540789, 440890, 730901]
 },
 "099837465723": {
-    "finalForecastHistorical": [690, 515, 595, 535, 435, 725, null, null, null, null, null, null],
-    "finalForecast": [null, null, null, null, null, null, 690, 515, 595, 535, 435, 725]
+    "finalForecastHistorical": [690567, 515678, 595789, 535890, 435901, 725012, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 690567, 515678, 595789, 535890, 435901, 725012]
 },
 "099837465724": {
-    "finalForecastHistorical": [710, 525, 605, 545, 445, 735, null, null, null, null, null, null],
-    "finalForecast": [null, null, null, null, null, null, 710, 525, 605, 545, 445, 735]
+    "finalForecastHistorical": [710678, 525789, 605890, 545901, 445012, 735123, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 710678, 525789, 605890, 545901, 445012, 735123]
 },
 "099837465725": {
-    "finalForecastHistorical": [720, 530, 610, 550, 450, 740, null, null, null, null, null, null],
-    "finalForecast": [null, null, null, null, null, null, 720, 530, 610, 550, 450, 740]
+    "finalForecastHistorical": [720789, 530890, 610901, 550012, 450123, 740234, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 720789, 530890, 610901, 550012, 450123, 740234]
+},
+"099837465726": {
+    "finalForecastHistorical": [730890, 535901, 615012, 555123, 455234, 745345, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 730890, 535901, 615012, 555123, 455234, 745345]
+},
+"099837465727": {
+    "finalForecastHistorical": [740901, 540012, 620123, 560234, 460345, 750456, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 740901, 540012, 620123, 560234, 460345, 750456]
+},
+"099837465728": {
+    "finalForecastHistorical": [750012, 545123, 625234, 565345, 465456, 755567, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 750012, 545123, 625234, 565345, 465456, 755567]
+},
+"099837465729": {
+    "finalForecastHistorical": [760123, 550234, 630345, 570456, 470567, 760678, null, null, null, null, null, null],
+    "finalForecast": [null, null, null, null, null, null, 760123, 550234, 630345, 570456, 470567, 760678]
 }
 
 }

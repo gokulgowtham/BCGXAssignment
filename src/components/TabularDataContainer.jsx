@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, TableBody, TableCell, TableRow, Paper } from "@mui/material";
 import "./TabularContainer.scss";
 
-const TabularDataContainer = () => {
+const TabularDataContainer = ({ forecastData }) => {
+  //   useEffect(() => {
+  //     if (forecastData) {
+  //         const
+  //     }
+  //   }, [forecastData]);
   return (
     <section className="TableContainer">
       <Paper
@@ -23,25 +28,15 @@ const TabularDataContainer = () => {
                   color: "white", // Text color
                 }}
               >
-                Data1
+                AI Forecast
               </TableCell>
               {/* Empty cells for the first 6 columns (Q1 to Q6) */}
-              {[...Array(6)].map((_, index) => (
-                <TableCell
-                  key={index}
-                  sx={{ borderBottom: "1px solid white", color: "white" }}
-                >
-                  {/* Empty cell */}
-                  -
-                </TableCell>
-              ))}
-              {/* Cells with values for the remaining 6 columns (Q7 to Q12) */}
-              {[...Array(6)].map((_, index) => (
+              {(forecastData?.aiForecastData ?? []).map((value, index) => (
                 <TableCell
                   key={index + 6}
                   sx={{ borderBottom: "1px solid white", color: "white" }}
                 >
-                  Q{index + 7} Value
+                  {value || '-'}
                 </TableCell>
               ))}
             </TableRow>
@@ -55,25 +50,16 @@ const TabularDataContainer = () => {
                   color: "white",
                 }}
               >
-                Data2
+                Previous qt. final forecast
               </TableCell>
-              {/* Empty cells for the first 6 columns (Q1 to Q6) */}
-              {[...Array(6)].map((_, index) => (
-                <TableCell
-                  key={index}
-                  sx={{ borderBottom: "1px solid white", color: "white" }}
-                >
-                  {/* Empty cell */}
-                  -
-                </TableCell>
-              ))}
+              
               {/* Cells with values for the remaining 6 columns (Q7 to Q12) */}
-              {[...Array(6)].map((_, index) => (
+              {(forecastData?.previousQtrFinalForecast ?? []).map((value, index) => (
                 <TableCell
                   key={index + 6}
                   sx={{ borderBottom: "1px solid white", color: "white" }}
                 >
-                  Q{index + 7} Value
+                  {value || '-'}
                 </TableCell>
               ))}
             </TableRow>
@@ -87,25 +73,16 @@ const TabularDataContainer = () => {
                   color: "white",
                 }}
               >
-                Data3
+                Final forecast
               </TableCell>
               {/* Empty cells for the first 6 columns (Q1 to Q6) */}
-              {[...Array(6)].map((_, index) => (
-                <TableCell
-                  key={index}
-                  sx={{ borderBottom: "none", color: "white" }}
-                >
-                  {/* Empty cell */}
-                  -
-                </TableCell>
-              ))}
               {/* Cells with values for the remaining 6 columns (Q7 to Q12) */}
-              {[...Array(6)].map((_, index) => (
+              {(forecastData?.finalForecastData ?? []).map((value, index) => (
                 <TableCell
                   key={index + 6}
                   sx={{ borderBottom: "none", color: "white" }}
                 >
-                  Q{index + 7} Value
+                  {value || '-'}
                 </TableCell>
               ))}
             </TableRow>
