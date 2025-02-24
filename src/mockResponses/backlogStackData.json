@@ -1,0 +1,56 @@
+[
+  {
+    "stackId": "099837465721",
+    "stackName": "Sample Stack 1",
+    "forecastData1": "89%",
+    "forecastData2": "80%"
+  },
+  {
+    "stackId": "099837465722",
+    "stackName": "Sample Stack 2",
+    "forecastData1": "79%",
+    "forecastData2": "70%"
+  },
+  {
+    "stackId": "099837465723",
+    "stackName": "Sample Stack 3",
+    "forecastData1": "69%",
+    "forecastData2": "60%"
+  },
+  {
+    "stackId": "099837465724",
+    "stackName": "Sample Stack 4",
+    "forecastData1": "59%",
+    "forecastData2": "50%"
+  },
+  {
+    "stackId": "099837465725",
+    "stackName": "Sample Stack 5",
+    "forecastData1": "49%",
+    "forecastData2": "40%"
+  },
+  {
+    "stackId": "099837465726",
+    "stackName": "Sample Stack 6",
+    "forecastData1": "39%",
+    "forecastData2": "30%"
+  },
+  {
+    "stackId": "099837465727",
+    "stackName": "Sample Stack 7",
+    "forecastData1": "29%",
+    "forecastData2": "20%"
+  },
+  {
+    "stackId": "099837465728",
+    "stackName": "Sample Stack 8",
+    "forecastData1": "19%",
+    "forecastData2": "10%"
+  },
+  {
+    "stackId": "099837465729",
+    "stackName": "Sample Stack 9",
+    "forecastData1": "9%",
+    "forecastData2": "0%"
+  }
+]

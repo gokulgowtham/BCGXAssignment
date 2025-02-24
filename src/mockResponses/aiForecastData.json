@@ -1,0 +1,263 @@
+{
+    "099837465721": {
+       "aiForecastHistorical": [
+            null,
+            null,
+            710237,
+            683445,
+            593445,
+            720378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            703445,
+            733445,
+            613445,
+            593445,
+            623445,
+            603445
+        ]
+    },
+    "099837465722": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            720237,
+            693445,
+            603445,
+            730378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            713445,
+            743445,
+            623445,
+            603445,
+            633445,
+            613445
+        ]
+    },
+    "099837465723": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            730237,
+            703445,
+            613445,
+            740378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            723445,
+            753445,
+            633445,
+            613445,
+            643445,
+            623445
+        ]
+    },
+    "099837465724": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            740237,
+            713445,
+            623445,
+            750378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            733445,
+            763445,
+            643445,
+            623445,
+            653445,
+            633445
+        ]
+    },
+    "099837465725": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            750237,
+            723445,
+            633445,
+            760378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            743445,
+            773445,
+            653445,
+            633445,
+            663445,
+            643445
+        ]
+    },
+    "099837465726": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            760237,
+            733445,
+            643445,
+            770378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            753445,
+            783445,
+            663445,
+            643445,
+            673445,
+            653445
+        ]
+    },
+    "099837465727": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            770237,
+            743445,
+            653445,
+            780378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            763445,
+            793445,
+            673445,
+            653445,
+            683445,
+            663445
+        ]
+    },
+    "099837465728": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            780237,
+            753445,
+            663445,
+            790378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            773445,
+            803445,
+            683445,
+            663445,
+            693445,
+            673445
+        ]
+    },
+    "099837465729": {
+        "aiForecastHistorical": [
+            null,
+            null,
+            790237,
+            763445,
+            673445,
+            800378,
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "aiForecast": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            783445,
+            813445,
+            693445,
+            673445,
+            703445,
+            683445
+        ]
+    }
+}

@@ -2,10 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -35,6 +38,19 @@ module.exports = {
       filename: 'index.html', // Output file name in the dist folder
     }),
   ],
+  optimization: {
+  splitChunks: {
+    chunks: 'all',
+    cacheGroups: {
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+      },
+    },
+  },
+  runtimeChunk: 'single', // Extract runtime code into a separate chunk
+},
   devtool: 'source-map', // Enable source maps
   devServer: {
     static: {

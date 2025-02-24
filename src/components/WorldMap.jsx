@@ -1,92 +1,184 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./WorldMap.scss";
 import { Map, Marker, Popup } from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css"; // MapTiler CSS
-import { LocationOn, Place } from "@mui/icons-material";
 import { createRoot } from "react-dom/client";
+import CustomMapPopup from "./CustomMapPopup";
+import {
+  Backdrop,
+  Box,
+  CircularProgress,
+  Fade,
+  Typography,
+} from "@mui/material";
 
 const WorldMap = ({ cities }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const markersRef = useRef([]);
+  const initialZoom = 1;
+  const targetZoom = 2;
+  const animationDuration = 2000;
+
+  const animateZoom = (startZoom, endZoom, duration) => {
+    if (!map.current) {
+      console.error("Map is not initialized");
+      return;
+    }
+
+    const startTime = Date.now();
+
+    const animate = () => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+
+      if (elapsed < duration) {
+        const progress = elapsed / duration;
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Cubic easing
+        const currentZoom = startZoom + (endZoom - startZoom) * easeProgress;
+
+        map.current.setZoom(currentZoom);
+        requestAnimationFrame(animate);
+      } else {
+        map.current.setZoom(endZoom);
+      }
+    };
+
+    animate();
+  };
 
   useEffect(() => {
     if (!mapContainer.current) return;
 
-    // Log coordinates for debugging
-    console.log("Cities:", cities);
-    // Initialize the map
     try {
       map.current = new Map({
         container: mapContainer.current,
-        style: `https://api.maptiler.com/maps/4e843e4a-7638-4d1e-9613-3050e06fb6c9/style.json?key=dDyD8fg0ysJ2I6rb0wSF`, // Replace with your style URL
-        center: [77.1025, 50.0], // Initial map center (longitude, latitude)
-        zoom: 2, // Initial zoom level
-        interactive: true, // Ensure the map is still interactive
+        style: `https://api.maptiler.com/maps/4e843e4a-7638-4d1e-9613-3050e06fb6c9/style.json?key=dDyD8fg0ysJ2I6rb0wSF`,
+        center: [77.1025, 50.0],
+        zoom: initialZoom,
+        interactive: true,
       });
 
-      // Add markers for each city
-      cities.forEach((city) => {
-        const {
-          title,
-          coordinates,
-          iconSetUrl,
-          forecastValue,
-          forecastPercentage,
-        } = city;
+      map.current.on("load", () => {
+        console.log("Map loaded successfully"); // Debugging
+        setIsLoading(false);
+        animateZoom(initialZoom, targetZoom, animationDuration);
 
-        // Create a container for the custom icon
-        const iconContainer = document.createElement("div");
+        cities.forEach((city) => {
+          const {
+            title,
+            coordinates,
+            iconSetUrl,
+            forecastValue,
+            forecastPercentage,
+          } = city;
 
-        // Create an image element for the custom icon
-        const iconImage = document.createElement("img");
-        iconImage.src = iconSetUrl; // URL of the custom icon
-        iconImage.style.width = "30px"; // Set icon size
-        iconImage.style.height = "30px"; // Set icon size
-        iconImage.style.cursor = "pointer"; // Show pointer cursor on hover
+          const iconContainer = document.createElement("div");
+          iconContainer.className = "marker-container";
 
-        // Append the image to the container
-        iconContainer.appendChild(iconImage);
+          const iconImage = document.createElement("img");
+          iconImage.src = iconSetUrl;
+          iconImage.className = "marker-icon";
+          iconContainer.appendChild(iconImage);
 
-        // Create a marker with the custom icon
-        const marker = new Marker({ element: iconContainer })
-          .setLngLat(coordinates)
-          .addTo(map.current);
+          const marker = new Marker({ element: iconContainer })
+            .setLngLat(coordinates)
+            .addTo(map.current);
 
-        // Create a popup (tooltip)
-        const popup = new Popup({ offset: 25 }).setHTML(`
-          <h3>${title}</h3>
-  <span>Forecast value: </span><h3>${forecastValue}</h3>
-  <span>Forecast percentage: </span><p>${forecastPercentage}</p>
-`);
+          const popupContainer = document.createElement("div");
+          const popupRoot = createRoot(popupContainer);
 
-        // Attach popup to marker
-        marker.setPopup(popup);
+          popupRoot.render(
+            <CustomMapPopup
+              title={title}
+              forecastValue={forecastValue}
+              forecastPercentage={forecastPercentage}
+            />
+          );
 
-        // Show popup on hover
-        marker.getElement().addEventListener("mouseenter", () => {
-          marker.togglePopup(); // Open popup
-        });
+          const popup = new Popup({
+            offset: 5,
+            closeButton: false,
+            closeOnClick: false,
+          }).setDOMContent(popupContainer);
 
-        // Hide popup when not hovering
-        marker.getElement().addEventListener("mouseleave", () => {
-          marker.togglePopup(); // Close popup
+          marker.setPopup(popup);
+
+          marker.getElement().addEventListener("mouseenter", () => {
+            marker.togglePopup();
+          });
+
+          marker.getElement().addEventListener("mouseleave", () => {
+            marker.togglePopup();
+          });
+
+          markersRef.current.push(marker);
         });
       });
+
+      map.current.on("error", (error) => {
+        console.error("Map error:", error); // Debugging
+        setIsLoading(false);
+      });
+
+      const handleResize = () => {
+        if (map.current) {
+          map.current.resize();
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        markersRef.current.forEach((marker) => marker.remove());
+        map.current?.remove();
+      };
     } catch (error) {
-      console.error("Error initializing map:", error);
+      console.error("Error initializing map:", error); // Debugging
+      setIsLoading(false);
     }
-
-    // Cleanup on unmount
-    return () => map.current?.remove();
   }, [cities]);
 
   return (
     <section className="mapContainer">
+      <Fade in={isLoading}>
+        <Backdrop
+          open={isLoading}
+          sx={{
+            color: "#fff",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+          }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap={2}
+            marginTop={"100px"}
+          >
+            <CircularProgress color="primary" size={60} />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{
+                color: "white",
+                fontWeight: 500,
+                textAlign: "center",
+              }}
+            >
+              Preparing your world view...
+            </Typography>
+          </Box>
+        </Backdrop>
+      </Fade>
       <div
         ref={mapContainer}
+        className={`map-element ${isLoading ? "loading" : "loaded"}`}
         style={{ height: "100%", width: "100%", position: "relative" }}
       />
-      <div ref={mapContainer} style={{ height: "100%", width: "100%" }} />
     </section>
   );
 };

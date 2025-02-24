@@ -1,0 +1,12 @@
+.chartContainer {
+    width: 100%;
+    min-height: 340px;
+    background-color: #000000;
+
+    & .graphPlotter{
+        & .graph--title-divider{
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}

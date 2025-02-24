@@ -1,0 +1,12 @@
+.backlogContainer {
+  & .tileDataContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & .tileDataR1 {
+      display: flex;
+      column-gap: 10px;
+    }
+  }
+}
