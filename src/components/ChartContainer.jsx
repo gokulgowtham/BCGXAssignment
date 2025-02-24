@@ -40,11 +40,11 @@ const ChartContainer = ({ selectedStackId, mapToggleState }) => {
 
       const mergedValues = consumptionValues.map((item, index) => ({
         ...item,
-        finalForecastData: finalForecastData[index],
-        finalForecastHistoricalData: finalForecastHistoricalData[index],
+        // finalForecastData: finalForecastData[index],
+        // finalForecastHistoricalData: finalForecastHistoricalData[index],
         aiForecastData: aiForecastData[index],
         aiForecastHistoricalData: aiForecastDataHistorical[index],
-        previousQtrFinalForecast: previousQtrFinalForecast[index],
+        // previousQtrFinalForecast: previousQtrFinalForecast[index],
       }));
 
       setConsumptionState(mergedValues);
@@ -76,7 +76,7 @@ const ChartContainer = ({ selectedStackId, mapToggleState }) => {
             FORECAST
           </Typography>
         </div>
-        <ResponsiveContainer width="100%" height={370}>
+        <ResponsiveContainer width="100%" height={330}>
           <LineChart
             data={consumptionState}
             margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
@@ -107,7 +107,7 @@ const ChartContainer = ({ selectedStackId, mapToggleState }) => {
             <Tooltip
               contentStyle={{
                 backgroundColor: "#333",
-                border: "1px solid #555",
+                border: "1px solid #555", 
                 color: "white",
                 borderRadius: "8px",
               }}
@@ -117,7 +117,7 @@ const ChartContainer = ({ selectedStackId, mapToggleState }) => {
             />
             {/* Dotted Divider between Q6 and Q7 */}
             <ReferenceLine
-              x={"Q7"} // Position between Q6 and Q7
+              x={"Q3 2024"} // Position between Q6 and Q7
               stroke="white" // Color of the divider
               strokeDasharray="5 5" // Dotted line
               strokeWidth={1} // Thickness of the line

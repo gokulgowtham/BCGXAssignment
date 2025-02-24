@@ -27,6 +27,7 @@ import ChartContainer from "../components/ChartContainer";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import CircularProgressWithLabel from "../components/CircularProgressWithLabel";
+import TabularDataContainer from "../components/TabularDataContainer";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -44,13 +45,13 @@ function TabPanel(props) {
 }
 
 const Details = ({ sideBarState }) => {
-  const { cityId } = useParams(); 
+  const { cityId } = useParams();
   const [tabValue, setTabValue] = useState("backlog");
   const [stackData, setStackData] = useState([]);
   const [selectedStackId, setSelectedStackId] = useState(null);
   const [stackIdData, setStackIdData] = useState(null);
-  const [aiForecastToggle, setAiForecastToggle]=useState(true);
-  const [finalForecastToggle, setFinalForecastToggle]=useState(true);
+  const [aiForecastToggle, setAiForecastToggle] = useState(true);
+  const [finalForecastToggle, setFinalForecastToggle] = useState(true);
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
@@ -82,16 +83,14 @@ const Details = ({ sideBarState }) => {
     }
   }, [selectedStackId, stackData]);
 
-  const handleMapToggle = (event)=>{
-    const {name, checked}=event.target;
-    if(name === "aiForecastToggle"){
+  const handleMapToggle = (event) => {
+    const { name, checked } = event.target;
+    if (name === "aiForecastToggle") {
       setAiForecastToggle(checked);
-    }else if(name === "finalForecastToggle"){
+    } else if (name === "finalForecastToggle") {
       setFinalForecastToggle(checked);
     }
-    
-
-  }
+  };
   return (
     <div className="DetailsContainer">
       <Box sx={{ display: "flex", height: "calc(100vh)", overflow: "hidden" }}>
@@ -174,7 +173,6 @@ const Details = ({ sideBarState }) => {
                     backlogValue={backlog}
                     stackData={stackData}
                     stackIdState={[selectedStackId, setSelectedStackId]}
-                    
                   />
                 </TabPanel>
                 <TabPanel value={tabValue} index={"pending"}>
@@ -487,7 +485,11 @@ const Details = ({ sideBarState }) => {
                 <CircularProgressWithLabel value={80} />
               </div>
             </div>
-            <ChartContainer selectedStackId={selectedStackId} mapToggleState={[aiForecastToggle, finalForecastToggle]} />
+            <ChartContainer
+              selectedStackId={selectedStackId}
+              mapToggleState={[aiForecastToggle, finalForecastToggle]}
+            />
+            <TabularDataContainer/>
           </section>
         </Box>
       </Box>
