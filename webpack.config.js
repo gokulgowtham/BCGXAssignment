@@ -39,10 +39,18 @@ module.exports = {
     }),
   ],
   optimization: {
-    splitChunks: {
-      chunks: 'all',
+  splitChunks: {
+    chunks: 'all',
+    cacheGroups: {
+      vendors: {
+        test: /[\\/]node_modules[\\/]/,
+        name: 'vendors',
+        chunks: 'all',
+      },
     },
   },
+  runtimeChunk: 'single', // Extract runtime code into a separate chunk
+},
   devtool: 'source-map', // Enable source maps
   devServer: {
     static: {

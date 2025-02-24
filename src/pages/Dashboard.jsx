@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import DashboardHeader from "../components/DashboardHeader";
-import WorldMap from "../components/WorldMap";
 import "./Dashboard.scss";
 import { Typography } from "@mui/material";
 import DashboardContent from "../components/DashboardContent";
 import { getCities } from "../mockApi";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Details from "./Details";
+// Lazy load the WorldMap component
+const WorldMap = React.lazy(() => import("../components/WorldMap"));
+const Details = lazy(()=>import("./Details"));
+
+const LoadingFallback = () => (
+  <div className="loading-container">
+    <Typography variant="h6">Loading...</Typography>
+  </div>
+);
 
 const Dashboard = () => {
   const location = useLocation();
@@ -39,7 +46,9 @@ const Dashboard = () => {
       <div className="DashboardContentContainer">
         {location.pathname === "/" && (
           <div className="worldMapContainer">
-            <WorldMap cities={cities} />
+            <Suspense fallback={<LoadingFallback/>}>
+              <WorldMap cities={cities} />
+            </Suspense>
           </div>
         )}
         <Routes>
@@ -51,7 +60,12 @@ const Dashboard = () => {
               </div>
             }
           />
-          <Route path="/details/:cityId" element={<Details sideBarState={[isSidebarOpen, setIsSidebarOpen]}/>} />
+          <Route
+            path="/details/:cityId"
+            element={
+              <Details sideBarState={[isSidebarOpen, setIsSidebarOpen]} />
+            }
+          />
         </Routes>
       </div>
     </section>

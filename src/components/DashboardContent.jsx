@@ -31,7 +31,7 @@ const DashboardContent = ({ cardData, position }) => {
         style={{ height: "100%" }}
       >
         <section className={`WidgetDataContainer ${position}`}>
-          {cardData.map(
+          {cardData?.map(
             ({ title, forecastValue, forecastPercentage, id }, index) => (
               <TransparentCard
                 cityId={id}
