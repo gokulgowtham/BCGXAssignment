@@ -13,60 +13,11 @@ import {
 } from "@mui/material";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import "./StackList.scss";
-// const tileData = [
-//   {
-//     id: 1,
-//     stackName: "Sample Stack 1",
-//     description: "This is the first card.",
-//   },
-//   {
-//     id: 2,
-//     stackName: "Sample Stack 2",
-//     description: "This is the second card.",
-//   },
-//   {
-//     id: 3,
-//     stackName: "Sample Stack 3",
-//     description: "This is the third card.",
-//   },
-//   {
-//     id: 4,
-//     stackName: "Sample Stack 4",
-//     description: "This is the fourth card.",
-//   },
-//   {
-//     id: 5,
-//     stackName: "Sample Stack 5",
-//     description: "This is the fifth card.",
-//   },
-//   {
-//     id: 6,
-//     stackName: "Sample Stack 6",
-//     description: "This is the sixth card.",
-//   },
-//   {
-//     id: 7,
-//     stackName: "Sample Stack 7",
-//     description: "This is the seventh card.",
-//   },
-//   {
-//     id: 8,
-//     stackName: "Sample Stack 8",
-//     description: "This is the eighth card.",
-//   },
-// ];
-
-const handleCardClick = (id) => {
-  console.log(`Card ${id} clicked`);
-};
-
-const handleButtonClick = (id) => {
-  console.log(`Button on Card ${id} clicked`);
-};
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const StackList = ({ stackData, stackIdState }) => {
   // const [selectedTileId, setSelectedTileId] = stackIdState;
+
   const [selectedStackId, setSelectedStackId] = stackIdState;
   // Click handler for the tiles
   const handleTileClick = (id) => {

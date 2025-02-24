@@ -12,9 +12,12 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+import { Typography } from "@mui/material";
 
-const ChartContainer = ({ selectedStackId }) => {
+const ChartContainer = ({ selectedStackId, mapToggleState }) => {
   const [consumptionState, setConsumptionState] = useState(null);
+  const [aiForecastToggle, finalForecastToggle] = mapToggleState;
+
   useEffect(() => {
     if (selectedStackId) {
       const {
@@ -26,10 +29,14 @@ const ChartContainer = ({ selectedStackId }) => {
         previousQtrFinalForecast,
       } = getPlotValues(selectedStackId);
 
-      const consumptionValues = consumptionData.map((ele, i) => ({
-        quarter: `Q${i + 1}`,
-        consumption: ele,
-      }));
+      const consumptionValues = consumptionData.map((ele, i) => {
+        const year = 2023 + Math.floor(i / 4);
+        const quarter = `Q${(i % 4) + 1} ${year}`;
+        return {
+          quarter,
+          consumption: ele,
+        };
+      });
 
       const mergedValues = consumptionValues.map((item, index) => ({
         ...item,
@@ -41,16 +48,35 @@ const ChartContainer = ({ selectedStackId }) => {
       }));
 
       setConsumptionState(mergedValues);
-      debugger;
-
-      //   setConsumptionState(consumptionValues);
     }
   }, [selectedStackId]);
 
   return (
     <section className="chartContainer">
       <div className="graphPlotter">
-        <ResponsiveContainer width="100%" height={380}>
+        <div className="graph--title-divider" style={{ display: "flex" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "white",
+              marginLeft: "10px",
+              fontWeight: "bold",
+            }}
+          >
+            HISTORICAL
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#42f5b3",
+              marginLeft: "10px",
+              fontWeight: "bold",
+            }}
+          >
+            FORECAST
+          </Typography>
+        </div>
+        <ResponsiveContainer width="100%" height={370}>
           <LineChart
             data={consumptionState}
             margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
@@ -75,7 +101,7 @@ const ChartContainer = ({ selectedStackId }) => {
                 value: "Values (ft. thousands)",
                 angle: -90,
                 position: "insideLeft",
-                fill: "white", // White label text
+                // White label text
               }}
             />
             <Tooltip
@@ -87,11 +113,11 @@ const ChartContainer = ({ selectedStackId }) => {
               }}
             />
             <Legend
-              wrapperStyle={{ color: "white" }} // White legend text
+              wrapperStyle={{ color: "white", paddingTop: "20px" }} // White legend text with padding
             />
             {/* Dotted Divider between Q6 and Q7 */}
             <ReferenceLine
-              x="Q6.5" // Position between Q6 and Q7
+              x={"Q7"} // Position between Q6 and Q7
               stroke="white" // Color of the divider
               strokeDasharray="5 5" // Dotted line
               strokeWidth={1} // Thickness of the line
@@ -106,56 +132,68 @@ const ChartContainer = ({ selectedStackId }) => {
               activeDot={{ r: 8 }} // Larger dot on hover
               name="Actual Consumption"
             />
-            {/* AI Forecast Line */}
-            <Line
-              type="monotone"
-              dataKey="finalForecastData"
-              stroke="#00ffcc" // Cyan line
-              strokeWidth={2}
-              dot={{ fill: "#ffcc00", r: 5 }} // Cyan dots
-              activeDot={{ r: 8 }} // Larger dot on hover
-              name="Final forecast data"
-              strokeDasharray={"5 5"} // Solid for Q1-Q6, dotted for Q7-Q12
-            />
-            <Line
-              type="monotone"
-              dataKey="finalForecastHistoricalData"
-              stroke="#00ffcc" // Cyan line
-              strokeWidth={2}
-              dot={{ fill: "#ffcc00", r: 5 }} // Cyan dots
-              activeDot={{ r: 8 }} // Larger dot on hover
-              name="Historical final forecast data"
-              strokeDasharray={"0"} // Solid for Q1-Q6, dotted for Q7-Q12
-            />
-            <Line
-              type="monotone"
-              dataKey="aiForecastData"
-              stroke="#00ff00" // Green line
-              strokeWidth={2}
-              dot={{ fill: "#ffcc00", r: 5 }} // Cyan dots
-              activeDot={{ r: 8 }} // Larger dot on hover
-              name="AI forecast Data"
-              strokeDasharray={"5 5"} // Solid for Q1-Q6, dotted for Q7-Q12
-            />
-            <Line
-              type="monotone"
-              dataKey="aiForecastHistoricalData"
-              stroke="#00ff00" // Cyan line
-              strokeWidth={2}
-              dot={{ fill: "#ffcc00", r: 5 }} // Cyan dots
-              activeDot={{ r: 8 }} // Larger dot on hover
-              name="AI Forecast historical data"
-              // Solid for Q1-Q6, dotted for Q7-Q12
-            />
+            {/* Final Forecast Data (Dotted Line) */}
+            {finalForecastToggle && (
+              <Line
+                type="monotone"
+                dataKey="finalForecastData"
+                stroke="#00ffcc" // Cyan line
+                strokeWidth={2}
+                dot={{ fill: "#00ffcc", r: 5 }} // Cyan dots
+                activeDot={{ r: 8 }} // Larger dot on hover
+                name="Final Forecast (Dotted)"
+                strokeDasharray="5 5" // Dotted line
+              />
+            )}
+            {/* Historical Final Forecast Data (Solid Line) */}
+            {finalForecastToggle && (
+              <Line
+                type="monotone"
+                dataKey="finalForecastHistoricalData"
+                stroke="#00ffcc" // Cyan line
+                strokeWidth={2}
+                dot={{ fill: "#00ffcc", r: 5 }} // Cyan dots
+                activeDot={{ r: 8 }} // Larger dot on hover
+                name="Historical Final Forecast (Solid)"
+                strokeDasharray="0" // Solid line
+              />
+            )}
+            {/* AI Forecast Data (Dashed Line) */}
+            {aiForecastToggle && (
+              <Line
+                type="monotone"
+                dataKey="aiForecastData"
+                stroke="#00ff00" // Green line
+                strokeWidth={2}
+                dot={{ fill: "#00ff00", r: 5 }} // Green dots
+                activeDot={{ r: 8 }} // Larger dot on hover
+                name="AI Forecast (Dashed)"
+                strokeDasharray="10 5" // Dashed line
+              />
+            )}
+            {/* Historical AI Forecast Data (Solid Line) */}
+            {aiForecastToggle && (
+              <Line
+                type="monotone"
+                dataKey="aiForecastHistoricalData"
+                stroke="#00ff00" // Green line
+                strokeWidth={2}
+                dot={{ fill: "#00ff00", r: 5 }} // Green dots
+                activeDot={{ r: 8 }} // Larger dot on hover
+                name="Historical AI Forecast (Solid)"
+                strokeDasharray="0" // Solid line
+              />
+            )}
+            {/* Previous Quarter Final Forecast (Dotted Line) */}
             <Line
               type="monotone"
               dataKey="previousQtrFinalForecast"
               stroke="#ff69b4" // Pink line
               strokeWidth={2}
-              dot={{ fill: "#ffcc00", r: 5 }} // Cyan dots
+              dot={{ fill: "#ff69b4", r: 5 }} // Pink dots
               activeDot={{ r: 8 }} // Larger dot on hover
-              name="Previous Quarter Final Forecast"
-              strokeDasharray={"0"} // Solid for Q1-Q6, dotted for Q7-Q12
+              name="Previous Quarter Final Forecast (Dotted)"
+              strokeDasharray="5 5" // Dotted line
             />
           </LineChart>
         </ResponsiveContainer>

@@ -24,7 +24,9 @@ import WarningAmberIcon from "@mui/icons-material/WarningAmber";
 import FilePresentIcon from "@mui/icons-material/FilePresent";
 import "./Details.scss";
 import ChartContainer from "../components/ChartContainer";
-
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import CircularProgressWithLabel from "../components/CircularProgressWithLabel";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -42,11 +44,13 @@ function TabPanel(props) {
 }
 
 const Details = ({ sideBarState }) => {
-  const { cityId } = useParams();
+  const { cityId } = useParams(); 
   const [tabValue, setTabValue] = useState("backlog");
   const [stackData, setStackData] = useState([]);
   const [selectedStackId, setSelectedStackId] = useState(null);
   const [stackIdData, setStackIdData] = useState(null);
+  const [aiForecastToggle, setAiForecastToggle]=useState(true);
+  const [finalForecastToggle, setFinalForecastToggle]=useState(true);
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
@@ -58,24 +62,36 @@ const Details = ({ sideBarState }) => {
 
   const { backlog, pending, finalSignOff } = getValuesForStack(cityId || "1");
   const stackDataResp = getStackDetails(tabValue);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const callGetStackDetails = async () => {
       const stackDataResp = getStackDetails(tabValue);
       setStackData(stackDataResp);
-    }
+    };
 
-    if(tabValue !==""){
+    if (tabValue !== "") {
       callGetStackDetails();
     }
-
   }, [tabValue]);
 
-  useEffect(()=>{
-    if(selectedStackId && stackData){
-      setStackIdData(stackData.find(stack => stack?.stackId === selectedStackId));
+  useEffect(() => {
+    if (selectedStackId && stackData) {
+      setStackIdData(
+        stackData.find((stack) => stack?.stackId === selectedStackId)
+      );
     }
-  }, [selectedStackId, stackData])
+  }, [selectedStackId, stackData]);
+
+  const handleMapToggle = (event)=>{
+    const {name, checked}=event.target;
+    if(name === "aiForecastToggle"){
+      setAiForecastToggle(checked);
+    }else if(name === "finalForecastToggle"){
+      setFinalForecastToggle(checked);
+    }
+    
+
+  }
   return (
     <div className="DetailsContainer">
       <Box sx={{ display: "flex", height: "calc(100vh)", overflow: "hidden" }}>
@@ -123,7 +139,7 @@ const Details = ({ sideBarState }) => {
                 sx={{ color: "white", paddingLeft: "10px" }}
                 gutterBottom
               >
-                {stackIdData?.stackName || 'Sample Stack'}
+                {stackIdData?.stackName || "Sample Stack"}
               </Typography>
               <section className="TabContainer">
                 <Tabs
@@ -154,7 +170,12 @@ const Details = ({ sideBarState }) => {
                   />
                 </Tabs>
                 <TabPanel value={tabValue} index={"backlog"}>
-                  <Backlog backlogValue={backlog} stackData={stackData} stackIdState={[selectedStackId, setSelectedStackId]} />
+                  <Backlog
+                    backlogValue={backlog}
+                    stackData={stackData}
+                    stackIdState={[selectedStackId, setSelectedStackId]}
+                    
+                  />
                 </TabPanel>
                 <TabPanel value={tabValue} index={"pending"}>
                   Item Two
@@ -194,7 +215,7 @@ const Details = ({ sideBarState }) => {
                     fontWeight: "bold",
                   }}
                 >
-                  {stackIdData?.stackName || 'Sample Stack'}
+                  {stackIdData?.stackName || "Sample Stack"}
                 </Typography>
               </div>
               <div className="header1--unit2">
@@ -211,7 +232,7 @@ const Details = ({ sideBarState }) => {
                     marginLeft: "10px",
                   }}
                 >
-                  Stack Id: {stackIdData?.stackId || '099837465721XX'}
+                  Stack Id: {stackIdData?.stackId || "099837465721XX"}
                 </Typography>
               </div>
               <div className="header1--unit3">
@@ -245,7 +266,7 @@ const Details = ({ sideBarState }) => {
                       FORECAST
                     </Typography>
                     <Typography variant="caption" color="#666">
-                     {stackIdData?.forecastData1 || '89%'}
+                      {stackIdData?.forecastData1 || "89%"}
                     </Typography>
                   </Box>
                   <Box
@@ -264,7 +285,7 @@ const Details = ({ sideBarState }) => {
                       FORECAST
                     </Typography>
                     <Typography variant="caption" color="#666">
-                    {stackIdData?.forecastData2 || '80%'}
+                      {stackIdData?.forecastData2 || "80%"}
                     </Typography>
                   </Box>
                 </Box>
@@ -300,9 +321,173 @@ const Details = ({ sideBarState }) => {
                 </Typography>
               </div>
             </div>
-            <div>
-              <ChartContainer selectedStackId={selectedStackId}/>
+            <div className="mapHeader">
+              <div>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Forecast Horizon
+                </Typography>
+              </div>
+              <div>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                >
+                  Latest Issue
+                </Typography>
+                <IconButton aria-haspopup="true" onClick={() => {}}>
+                  <ArrowDropDownIcon sx={{ color: "white" }} />
+                </IconButton>
+              </div>
+              <div>
+                <ErrorOutlineIcon sx={{ color: "yellow" }} />
+              </div>
+              <Divider
+                sx={{ backgroundColor: "white", height: "16px" }}
+                orientation="vertical"
+              />
+              <div>
+                <Switch
+                  size="small"
+                  name=""
+                  sx={{
+                    // Styles for the track (background) of the Switch
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "grey", // Grey color when off
+                    },
+                    // Styles for the thumb (circle) of the Switch
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "white", // White color for the thumb
+                    },
+                    // Styles for the Switch when it is checked (on)
+                    "&.Mui-checked": {
+                      "& .MuiSwitch-track": {
+                        backgroundColor: "green", // Green color when on
+                      },
+                      "& .MuiSwitch-thumb": {
+                        backgroundColor: "white", // White color for the thumb when on
+                      },
+                    },
+                  }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                >
+                  SHOW CONFIDENCE INTERVAL
+                </Typography>
+              </div>
             </div>
+            <div className="mapHeader2">
+              <div className="mapHeader2--unit1">
+                {" "}
+                <Switch
+                  size="small"
+                  name="aiForecastToggle"
+                  defaultChecked={true}
+                  checked={aiForecastToggle}
+                  onChange={handleMapToggle}
+                  sx={{
+                    // Styles for the track (background) of the Switch
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "grey", // Grey color when off
+                    },
+                    // Styles for the thumb (circle) of the Switch
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "white", // White color for the thumb
+                    },
+                    // Styles for the Switch when it is checked (on)
+                    "&.Mui-checked": {
+                      "& .MuiSwitch-track": {
+                        backgroundColor: "green", // Green color when on
+                      },
+                      "& .MuiSwitch-thumb": {
+                        backgroundColor: "white", // White color for the thumb when on
+                      },
+                    },
+                  }}
+                />
+                <Divider
+                  sx={{
+                    height: "14px",
+                    backgroundColor: "#38b000",
+                    width: "6px",
+                  }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                >
+                  AI FORECAST
+                </Typography>
+              </div>
+              <div>
+                <CircularProgressWithLabel value={89} />
+              </div>
+              <div className="mapHeader2--unit1">
+                {" "}
+                <Switch
+                  size="small"
+                  name="finalForecastToggle"
+                  defaultChecked={true}
+                  selected={finalForecastToggle}
+                  onChange={handleMapToggle}
+                  sx={{
+                    // Styles for the track (background) of the Switch
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "grey", // Grey color when off
+                    },
+                    // Styles for the thumb (circle) of the Switch
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "white", // White color for the thumb
+                    },
+                    // Styles for the Switch when it is checked (on)
+                    "&.Mui-checked": {
+                      "& .MuiSwitch-track": {
+                        backgroundColor: "green", // Green color when on
+                      },
+                      "& .MuiSwitch-thumb": {
+                        backgroundColor: "white", // White color for the thumb when on
+                      },
+                    },
+                  }}
+                />
+                <Divider
+                  sx={{
+                    height: "14px",
+                    backgroundColor: "#42f5b3",
+                    width: "6px",
+                  }}
+                />
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "white",
+                    marginLeft: "10px",
+                  }}
+                >
+                  FINAL FORECAST
+                </Typography>
+              </div>
+              <div>
+                <CircularProgressWithLabel value={80} />
+              </div>
+            </div>
+            <ChartContainer selectedStackId={selectedStackId} mapToggleState={[aiForecastToggle, finalForecastToggle]} />
           </section>
         </Box>
       </Box>
