@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./WorldMap.scss";
 import { Map, Marker, Popup } from "@maptiler/sdk";
 import "@maptiler/sdk/dist/maptiler-sdk.css"; // MapTiler CSS
-import { LocationOn, Place } from "@mui/icons-material";
 import { createRoot } from "react-dom/client";
 import CustomMapPopup from "./CustomMapPopup";
 import {
@@ -23,6 +22,11 @@ const WorldMap = ({ cities }) => {
   const animationDuration = 2000;
 
   const animateZoom = (startZoom, endZoom, duration) => {
+    if (!map.current) {
+      console.error("Map is not initialized");
+      return;
+    }
+
     const startTime = Date.now();
 
     const animate = () => {
@@ -57,11 +61,9 @@ const WorldMap = ({ cities }) => {
       });
 
       map.current.on("load", () => {
-        // Start zoom animation after map loads
-        setTimeout(() => {
-          setIsLoading(false);
-          animateZoom(initialZoom, targetZoom, animationDuration);
-        }, 500);
+        console.log("Map loaded successfully"); // Debugging
+        setIsLoading(false);
+        animateZoom(initialZoom, targetZoom, animationDuration);
 
         cities.forEach((city) => {
           const {
@@ -115,6 +117,11 @@ const WorldMap = ({ cities }) => {
         });
       });
 
+      map.current.on("error", (error) => {
+        console.error("Map error:", error); // Debugging
+        setIsLoading(false);
+      });
+
       const handleResize = () => {
         if (map.current) {
           map.current.resize();
@@ -129,7 +136,7 @@ const WorldMap = ({ cities }) => {
         map.current?.remove();
       };
     } catch (error) {
-      console.error("Error initializing map:", error);
+      console.error("Error initializing map:", error); // Debugging
       setIsLoading(false);
     }
   }, [cities]);
@@ -160,7 +167,6 @@ const WorldMap = ({ cities }) => {
                 color: "white",
                 fontWeight: 500,
                 textAlign: "center",
-                
               }}
             >
               Preparing your world view...

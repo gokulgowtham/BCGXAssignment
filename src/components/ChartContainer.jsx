@@ -112,7 +112,7 @@ const ChartContainer = ({ selectedStackId, mapToggleState, stackIdData}) => {
                           position: "insideLeft",
                           offset: 0, // Adjust the offset value
                           fill: "white", // White label text
-                          dy: 20 // Adjust the vertical position
+                          dy: 80 // Adjust the vertical position
                         }}
                         tickFormatter={(value) => `${value / 1000}`} // Format y-axis values in thousands
               />

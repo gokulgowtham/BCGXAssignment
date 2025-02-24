@@ -14,11 +14,15 @@ import "./DashboardHeader.scss";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-export default function ButtonAppBar({ setPosition, isDetailsRoute, sideBarState }) {
+export default function ButtonAppBar({
+  setPosition,
+  isDetailsRoute,
+  sideBarState,
+}) {
   const { cityId } = useParams();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = sideBarState;
-  
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,40 +31,40 @@ export default function ButtonAppBar({ setPosition, isDetailsRoute, sideBarState
     setAnchorEl(null);
   };
 
-  const handleMenuClick=()=>{
-    if(!isDetailsRoute){
+  const handleMenuClick = () => {
+    if (!isDetailsRoute) {
       return;
     }
-    // console.log('menu clicked!')
     setIsSidebarOpen(!isSidebarOpen);
-  }
+  };
   return (
     <section>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
-          position="sticky" // Makes the AppBar sticky
+          position="sticky"
           sx={{
-            backgroundColor: "#000", // Black background
-            color: "#fff", // White text color
-            height: "40px", // Adjust height as needed
+            backgroundColor: "#000",
+            color: "#fff",
+            height: "40px",
           }}
         >
           <section className="headerContentContainer">
-            <div className="menuWithTitle"> 
-              <IconButton
-                aria-controls={open ? "settings-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleMenuClick}
-              >
-                {/* <LanguageOutlinedIcon sx={{ color: "white" }} /> */}
-                <MenuOutlined sx={{ color: "white" }}/>
-              </IconButton>
+            <div className="menuWithTitle">
+              <Tooltip title="menu" arrow>
+                <IconButton
+                  aria-controls={open ? "settings-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleMenuClick}
+                >
+                  <MenuOutlined sx={{ color: "white" }} />
+                </IconButton>
+              </Tooltip>
               {!isDetailsRoute && (
                 <Typography
                   variant="h6"
                   component="div"
-                  sx={{ flexGrow: 1, fontSize: "1rem", marginTop: '8px' }}
+                  sx={{ flexGrow: 1, fontSize: "1rem", marginTop: "8px" }}
                 >
                   Webapp
                 </Typography>
@@ -133,6 +137,7 @@ export default function ButtonAppBar({ setPosition, isDetailsRoute, sideBarState
                     </Menu>
                   </div>
                   <div>
+                  <Tooltip title="Coming soon..." arrow>
                     <IconButton
                       aria-controls={open ? "settings-menu" : undefined}
                       aria-haspopup="true"
@@ -140,10 +145,12 @@ export default function ButtonAppBar({ setPosition, isDetailsRoute, sideBarState
                     >
                       <LanguageOutlinedIcon sx={{ color: "white" }} />
                     </IconButton>
+                    </Tooltip>
                   </div>{" "}
                 </>
               )}
               <div className="userIcon">
+              <Tooltip title="Gowtham V" arrow>
                 <IconButton
                   onClick={handleClick}
                   aria-controls={open ? "settings-menu" : undefined}
@@ -159,6 +166,7 @@ export default function ButtonAppBar({ setPosition, isDetailsRoute, sideBarState
                     User
                   </Typography>
                 </IconButton>
+                </Tooltip>
               </div>
             </div>
           </section>
